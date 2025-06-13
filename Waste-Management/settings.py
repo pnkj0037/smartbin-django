@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'waste_mgmt.urls'
+ROOT_URLCONF = 'Waste-Management.urls'
 
 TEMPLATES = [
     {
@@ -76,7 +76,7 @@ TEMPLATES = [
         },
     },
 ]
-WSGI_APPLICATION = 'waste_mgmt.wsgi.application'
+WSGI_APPLICATION = 'Waste-Management.wsgi.application'
 
 
 DATABASES = {

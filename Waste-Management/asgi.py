@@ -1,5 +1,5 @@
 """
-ASGI config for waste_mgmt project.
+ASGI config for Waste-Management project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'waste_mgmt.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Waste-Management.settings')
 
 application = get_asgi_application()

@@ -1,5 +1,5 @@
 """
-WSGI config for waste_mgmt project.
+WSGI config for Waste-Management project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
