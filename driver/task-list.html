@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Task List | Driver Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+
+<!-- Driver Navigation -->
+<nav>
+  <div class="container nav-container">
+    <div class="logo">Smart<span>Bin</span> Driver</div>
+    <div class="nav-links">
+      <a href="driver-dashboard.html">Dashboard</a>      
+      <a href="live-map.html">Live Map</a>
+      <a href="task-list.html" class="active">Task List</a>
+      <a href="/index.html">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Task List Section -->
+<section class="features" style="padding-top: 130px;">
+  <div class="container">
+    <h2 class="section-header">Today's Bin Tasks</h2>
+    <div class="features-grid">
+      
+      <!-- Bin Card 1 -->
+      <div class="feature-card" style="text-align: left;">
+        <div class="icon"><i class="fas fa-exclamation-circle"></i></div>
+        <h3>Bin #12</h3>
+        <p><strong>Status:</strong> Citizen Reported</p>
+        <p><strong>Note:</strong> Overflowing – Residential Area</p>
+        <label style="margin-top: 10px;"><input type="checkbox"> Mark as Handled</label>
+      </div>
+
+      <!-- Bin Card 2 -->
+      <div class="feature-card" style="text-align: left;">
+        <div class="icon"><i class="fas fa-clinic-medical"></i></div>
+        <h3>Bin #34</h3>
+        <p><strong>Status:</strong> Auto-Detected Full</p>
+        <p><strong>Note:</strong> Medical Waste – Handle with Care</p>
+        <label style="margin-top: 10px;"><input type="checkbox"> Mark as Handled</label>
+      </div>
+
+      <!-- Bin Card 3 -->
+      <div class="feature-card" style="text-align: left;">
+        <div class="icon"><i class="fas fa-school"></i></div>
+        <h3>Bin #22</h3>
+        <p><strong>Status:</strong> Auto-Detected Full</p>
+        <p><strong>Note:</strong> Near School – High Priority</p>
+        <label style="margin-top: 10px;"><input type="checkbox"> Mark as Handled</label>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Font Awesome for Icons -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+</body>
+</html>

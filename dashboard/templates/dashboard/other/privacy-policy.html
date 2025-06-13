@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy | Smart Waste System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+  <style>
+    .policy-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    .policy-section {
+      margin-bottom: 30px;
+    }
+    .policy-section h2 {
+      color: var(--primary);
+      margin-bottom: 15px;
+    }
+    .policy-section h3 {
+      margin: 20px 0 10px;
+    }
+    .policy-section p, .policy-section ul {
+      margin-bottom: 15px;
+      line-height: 1.8;
+    }
+    .policy-section ul {
+      padding-left: 20px;
+    }
+    .last-updated {
+      font-style: italic;
+      color: var(--gray);
+      text-align: right;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <div class="logo">Smart<span>Bin</span></div>
+      <div class="nav-links">
+        <a href="/index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="{% url 'login' %}" class="login-btn">Login</a>
+      </div>
+      <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="policy-hero">
+      <h1>Privacy Policy</h1>
+      <p>How we collect, use, and protect your information</p>
+    </section>
+
+    <div class="policy-content">
+      <div class="policy-section">
+        <h2>Introduction</h2>
+        <p>At SmartBin, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Smart Waste Management System.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>Information We Collect</h2>
+        <h3>Personal Information</h3>
+        <p>We may collect personal information that you voluntarily provide to us, including:</p>
+        <ul>
+          <li>Name and contact details (email, phone number)</li>
+          <li>Location data for bin reporting</li>
+          <li>Account credentials</li>
+          <li>Payment information (for reward redemptions)</li>
+        </ul>
+
+        <h3>Usage Data</h3>
+        <p>We automatically collect certain information when you use our services:</p>
+        <ul>
+          <li>Device information (IP address, browser type)</li>
+          <li>Usage patterns and preferences</li>
+          <li>Bin interaction data</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>How We Use Your Information</h2>
+        <p>We use the information we collect to:</p>
+        <ul>
+          <li>Provide and maintain our services</li>
+          <li>Improve waste management efficiency</li>
+          <li>Process reward redemptions</li>
+          <li>Communicate with you about services</li>
+          <li>Monitor usage patterns for service improvement</li>
+          <li>Detect and prevent fraud</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>Data Sharing and Disclosure</h2>
+        <p>We may share information with:</p>
+        <ul>
+          <li>Municipal authorities for waste collection purposes</li>
+          <li>Service providers who assist our operations</li>
+          <li>When required by law or to protect rights</li>
+          <li>With your consent for specific purposes</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>Data Security</h2>
+        <p>We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, or destruction.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>Your Rights</h2>
+        <p>You have the right to:</p>
+        <ul>
+          <li>Access your personal data</li>
+          <li>Request correction of inaccurate data</li>
+          <li>Request deletion of your data</li>
+          <li>Object to certain processing activities</li>
+          <li>Withdraw consent where applicable</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>Changes to This Policy</h2>
+        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page.</p>
+      </div>
+
+      <div class="last-updated">
+        <p>Last updated: November 15, 2023</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Smart<span>Bin</span></div>
+        <div class="footer-links">
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 Smart Waste Management System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

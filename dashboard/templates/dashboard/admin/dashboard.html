@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartBin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'dashboard/style.css' %}" />
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">SmartBin</div>
+            <nav class="nav-links">
+                <a href="dashboard.html" class="nav-item active"><i
+                        class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+                <a href="bins-management.html" class="nav-item"><i class="fas fa-trash-alt"></i><span>Bins</span></a>
+                <a href="users-management.html" class="nav-item"><i class="fas fa-users"></i><span>Users</span></a>
+                <a href="reports.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Reports</span></a>
+                <a href="settings.html" class="nav-item"><i class="fas fa-cog"></i><span>Settings</span></a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-dashboard">
+            <header class="top-bar">
+                <h1>Dashboard Overview</h1>
+                <div class="admin-info">
+                    <span class="notif"><i class="fas fa-bell"></i><span class="badge">3</span></span>
+                    <div class="profile">
+                        <img src="{% static 'assets/images/profile.png' %}" alt="Admin" />
+                        <span>Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <section class="metrics">
+                <div class="card card-animate">
+                    <h3>Total Bins</h3>
+                    <p>142</p>
+                </div>
+                <div class="card card-animate alert">
+                    <h3>Full Bins</h3>
+                    <p>18</p>
+                </div>
+                <div class="card card-animate">
+                    <h3>Active Users</h3>
+                    <p>1,248</p>
+                </div>
+                <div class="card card-animate">
+                    <h3>Collections Today</h3>
+                    <p>56</p>
+                </div>
+            </section>
+
+            <section class="dashboard-content">
+                <div class="left-column">
+                    <!-- Priority Alerts -->
+                    <div class="alerts-section">
+                        <h3>Priority Alerts</h3>
+
+                        <div class="alert-card high">
+                            <span class="alert-text">Bin #12 is overflowing</span>
+                            <span class="priority-tag">High</span>
+                            <button class="action-btn">Resolve</button>
+                        </div>
+
+                        <div class="alert-card medium">
+                            <span class="alert-text">Bin #7 not updated in 2 days</span>
+                            <span class="priority-tag">Medium</span>
+                            <button class="action-btn">View</button>
+                        </div>
+
+                        <div class="alert-card low">
+                            <span class="alert-text">Driver #5 delayed by 10 mins</span>
+                            <span class="priority-tag">Low</span>
+                            <button class="action-btn">Ignore</button>
+                        </div>
+                    </div>
+                    <!-- Recent Activity -->
+                    <div class="activity-section">
+                        <h3>Recent Activity</h3>
+
+                        <div class="activity-item">
+                            <span class="activity-text">Bin #5 was emptied by Driver #3</span>
+                            <span class="activity-time">2 mins ago</span>
+                        </div>
+
+                        <div class="activity-item">
+                            <span class="activity-text">Bin #8 marked as Full</span>
+                            <span class="activity-time">10 mins ago</span>
+                        </div>
+
+                        <div class="activity-item">
+                            <span class="activity-text">New user (Citizen) registered</span>
+                            <span class="activity-time">1 hour ago</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="right-column">
+                    <!-- Collection Progress -->
+                    <div class="metric-card">
+                        <h3>Collection Progress</h3>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%;">
+                                    <span class="progress-text">75%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-slide">
+                        <h2>Quick Actions</h2>
+                        <button class="btn"><i class="fas fa-plus-circle"></i> Add Bin</button>
+                        <button class="btn"><i class="fas fa-file-export"></i> Generate Report</button>
+                        <button class="btn"><i class="fas fa-bell"></i> Send Notification</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="{% static 'dashboard/js/script.js' %}"></script>
+</body>
+
+</html>

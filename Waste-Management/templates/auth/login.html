@@ -1,0 +1,510 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Smart Waste System</title>
+
+  <!-- Google Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- ✅ Use Django static path -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'dashboard/css/auth.css' %}">
+  <style>
+    /* [Your existing CSS remains unchanged — omitted for brevity] */
+    /* Add these extra styles below the existing CSS: */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    .auth-container {
+      display: flex;
+      width: 900px;
+      height: 600px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      background-color: #fff;
+      animation: fadeIn 0.8s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .auth-card {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .auth-header {
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .auth-header h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      margin-bottom: 8px;
+      color: #2c3e50;
+      animation: slideDown 0.6s ease-out forwards;
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    @keyframes slideDown {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .auth-header p {
+      color: #7f8c8d;
+      font-size: 15px;
+      animation: slideDown 0.6s ease-out 0.2s forwards;
+      opacity: 0;
+      transform: translateY(-15px);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      animation: slideUp 0.5s ease-out forwards;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .form-group:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+
+    .form-group:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes slideUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      color: #34495e;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: all 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    }
+
+    .password-input {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #95a5a6;
+      transition: color 0.3s ease;
+    }
+
+    .toggle-password:hover {
+      color: #3498db;
+    }
+
+    .forgot-password {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 13px;
+      color: #3498db;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .forgot-password:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .auth-btn {
+      background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+      color: white;
+      margin-top: 10px;
+      animation: pulse 1.5s infinite ease-in-out;
+      animation-delay: 1.2s;
+      opacity: 0;
+      animation: slideUp 0.5s ease-out 0.5s forwards;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(52, 152, 219, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(52, 152, 219, 0); }
+    }
+
+    .auth-btn:hover {
+      background: linear-gradient(135deg, #2980b9 0%, #2c3e50 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+    }
+
+    .auth-footer {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 14px;
+      color: #7f8c8d;
+      animation: fadeIn 0.8s ease-out 0.6s forwards;
+      opacity: 0;
+    }
+
+    .auth-footer a {
+      color: #3498db;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .auth-footer a:hover {
+      color: #2980b9;
+      text-decoration: underline;
+    }
+
+    .social-login {
+      margin-top: 30px;
+      text-align: center;
+      animation: fadeIn 0.8s ease-out 0.7s forwards;
+      opacity: 0;
+    }
+
+    .social-login p {
+      position: relative;
+      font-size: 14px;
+      color: #95a5a6;
+      margin-bottom: 20px;
+    }
+
+    .social-login p::before,
+    .social-login p::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 30%;
+      height: 1px;
+      background-color: #ddd;
+    }
+
+    .social-login p::before {
+      left: 0;
+    }
+
+    .social-login p::after {
+      right: 0;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .google {
+      background: linear-gradient(135deg, #dd4b39 0%, #c23321 100%);
+    }
+
+    .facebook {
+      background: linear-gradient(135deg, #3b5998 0%, #2d4373 100%);
+    }
+
+    .auth-image {
+      flex: 1;
+      background-color: #f5f7fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .auth-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: zoomIn 25s infinite alternate;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(1); }
+      to { transform: scale(1.1); }
+    }
+
+    .auth-image::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(52, 152, 219, 0.6) 0%, rgba(44, 62, 80, 0.6) 100%);
+      z-index: 1;
+    }
+
+    .auth-image::after {
+      content: "Smart Waste System";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 32px;
+      color: white;
+      text-align: center;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 0.8s forwards;
+    }
+
+    @media (max-width: 768px) {
+      .auth-container {
+        width: 95%;
+        flex-direction: column;
+        height: auto;
+      }
+
+      .auth-image {
+        display: none;
+      }
+
+      .auth-card {
+        padding: 30px 20px;
+      }
+    }
+
+    /* Loading animation */
+    .loading {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      animation: loadingFadeOut 1s ease-out 1.5s forwards;
+    }
+
+    @keyframes loadingFadeOut {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid #f3f3f3;
+      border-top: 5px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .form-error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: none;
+      animation: fadeIn 0.3s ease-in;
+    }
+
+    .form-group.checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: -10px;
+      margin-bottom: 15px;
+    }
+
+    .form-group.checkbox-group label {
+      font-weight: normal;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading animation -->
+  <div class="loading">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1>Welcome Back</h1>
+        <p>Login to access your Smart Waste account</p>
+      </div>
+
+      <!-- In login.html, modify the form section -->
+<form method="POST" class="auth-form">
+  {% csrf_token %}
+  <div class="form-error" id="error-message">{% if error %}{{ error }}{% endif %}</div>
+
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" id="username" name="username" placeholder="Enter username" required>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <div class="password-input">
+      <input type="password" id="password" name="password" placeholder="Enter password" required>
+      <button type="button" class="toggle-password">
+        <i class="far fa-eye"></i>
+      </button>
+    </div>
+  </div>
+
+  <button type="submit" class="btn auth-btn">Login</button>
+</form>
+
+      <div class="social-login">
+        <p>Or login with</p>
+        <div class="social-icons">
+          <a href="#" class="social-btn google">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="#" class="social-btn facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="auth-image">
+      <img src="../assets/images/recycle.jpg" alt="Smart Waste System" />
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const togglePassword = document.querySelector('.toggle-password');
+      const passwordInput = document.querySelector('#password');
+      const form = document.querySelector('.auth-form');
+      const emailInput = document.querySelector('#email');
+      const errorMessage = document.querySelector('#error-message');
+
+      togglePassword.addEventListener('click', function () {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        this.querySelector('i').classList.toggle('fa-eye');
+        this.querySelector('i').classList.toggle('fa-eye-slash');
+      });
+
+      passwordInput.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+          form.dispatchEvent(new Event('submit'));
+        }
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        if (email && password) {
+          errorMessage.style.display = 'none';
+          const btn = document.querySelector('.auth-btn');
+          btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Signing in...';
+          btn.style.pointerEvents = 'none';
+
+          setTimeout(function () {
+            window.location.href = "/admin/dashboard.html";
+          }, 1500);
+        } else {
+          errorMessage.style.display = 'block';
+        }
+      });
+
+      const inputs = document.querySelectorAll('input');
+      inputs.forEach((input) => {
+        input.addEventListener('focus', function () {
+          this.parentElement.style.transform = 'translateY(-5px)';
+          this.parentElement.style.transition = 'transform 0.3s ease';
+        });
+        input.addEventListener('blur', function () {
+          this.parentElement.style.transform = 'translateY(0)';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

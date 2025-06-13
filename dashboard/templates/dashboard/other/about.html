@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Smart Waste System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <div class="logo">Smart<span>Bin</span></div>
+      <div class="nav-links">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}" class="active">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'login' %}" class="login-btn">Login</a>
+      </div>
+      <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="about-hero">
+      <h1>Revolutionizing Waste Management</h1>
+      <p>Our mission to create cleaner, smarter cities</p>
+    </section>
+
+    <section class="about-story">
+      <div class="section-header">
+        <h2>Our Story</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="story-content">
+        <div class="story-image">
+          <img src="assets/images/about-story.jpg" alt="Our Team">
+        </div>
+        <div class="story-text">
+          <p>Founded in 2023, SmartBin began as a university project at Vishwakarma Institute of Technology with a simple goal: to make waste management more efficient through technology.</p>
+          <p>What started as a class project has grown into a comprehensive solution adopted by municipalities across India, reducing collection costs by up to 30% while increasing recycling rates.</p>
+          <p>Our team of engineers, environmentalists, and data scientists continue to innovate new ways to tackle urban waste challenges.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section">
+      <div class="section-header">
+        <h2>Meet The Team</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-image">
+            <img src="assets/images/team1.jpg" alt="Team Member">
+          </div>
+          <h3>Athrav Warkad</h3>
+          <p>Project Lead</p>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="assets/images/team1.jpg" alt="Team Member">
+          </div>
+          <h3>Athrav Warkad</h3>
+          <p>Project Lead</p>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="assets/images/team1.jpg" alt="Team Member">
+          </div>
+          <h3>Athrav Warkad</h3>
+          <p>Project Lead</p>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="assets/images/team1.jpg" alt="Team Member">
+          </div>
+          <h3>Athrav Warkad</h3>
+          <p>Project Lead</p>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="assets/images/team1.jpg" alt="Team Member">
+          </div>
+          <h3>Athrav Warkad</h3>
+          <p>Project Lead</p>
+        </div>
+        <div class="team-member">
+          <div class="member-image">
+            <img src="assets/images/team1.jpg" alt="Team Member">
+          </div>
+          <h3>Athrav Warkad</h3>
+          <p>Project Lead</p>
+        </div>
+        <!-- Add 5 more team members similarly -->
+      </div>
+    </section>
+
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>50+</h3>
+          <p>Smart Bins Deployed</p>
+        </div>
+        <div class="stat-card">
+          <h3>30%</h3>
+          <p>Collection Cost Reduction</p>
+        </div>
+        <div class="stat-card">
+          <h3>15K+</h3>
+          <p>Active Users</p>
+        </div>
+        <div class="stat-card">
+          <h3>75%</h3>
+          <p>Recycling Rate Increase</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Smart<span>Bin</span></div>
+        <div class="footer-links">
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">Privacy Policy</a>
+        </div>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 Smart Waste Management System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

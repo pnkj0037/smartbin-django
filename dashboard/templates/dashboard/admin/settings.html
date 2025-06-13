@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Settings - SmartBin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar (same as dashboard sidebar) -->
+    <aside class="sidebar">
+      <div class="logo">SmartBin</div>
+      <nav class="nav-links">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+        <a href="bins-management.html" class="nav-item"><i class="fas fa-trash-alt"></i><span>Bins</span></a>
+        <a href="users-management.html" class="nav-item"><i class="fas fa-users"></i><span>Users</span></a>
+        <a href="reports.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Reports</span></a>
+        <a href="settings.html" class="nav-item active"><i class="fas fa-cog"></i><span>Settings</span></a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-dashboard">
+      <header class="top-bar">
+        <h1>Settings</h1>
+      </header>
+
+      <section class="settings-content card">
+        <h2>Alert Thresholds</h2>
+        <label for="fullAlert">Full Bin Threshold (%):</label>
+        <input type="number" id="fullAlert" min="0" max="100" value="90" class="input-field" />
+
+        <h2>Reward Rules</h2>
+        <label for="pointsPerKg">Points Per Kg:</label>
+        <input type="number" id="pointsPerKg" value="10" class="input-field" />
+
+        <h2>System Preferences</h2>
+        <label for="themeSelect">Theme:</label>
+        <select id="themeSelect" class="input-field">
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+
+        <button class="btn" style="margin-top: 20px;" onclick="saveSettings()">Save Settings</button>
+      </section>
+    </main>
+  </div>
+  <script src="{% static 'dashboard/js/script.js' %}"></script>
+</body>
+</html>

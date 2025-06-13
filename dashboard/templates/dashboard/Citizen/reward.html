@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Bin | Rewards Center</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="app-header">
+            <button class="icon-btn" onclick="window.location.href='dashboard.html'">
+                <span class="material-icons">arrow_back</span>
+            </button>
+            
+            <div class="logo">Rewards<span>Center</span></div>
+            <div class="header-actions">
+                <div class="points-display">1,250 pts</div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="rewards">Rewards</button>
+                <button class="tab-btn" data-tab="leaderboard">Leaderboard</button>
+                <button class="tab-btn" data-tab="badges">Badges</button>
+            </div>
+
+            <div id="rewards" class="tab-content active">
+                <div class="reward-card">
+                    <div class="reward-info">
+                        <h3>10% Coffee Discount</h3>
+                        <p>Green Bean Café • Expires in 3 days</p>
+                    </div>
+                    <button class="redeem-btn" data-cost="150">
+                        Redeem (150pts)
+                    </button>
+                </div>
+                
+                <div class="reward-card">
+                    <div class="reward-info">
+                        <h3>Free Metro Ride</h3>
+                        <p>City Transit • Valid for 1 week</p>
+                    </div>
+                    <button class="redeem-btn" data-cost="200">
+                        Redeem (200pts)
+                    </button>
+                </div>
+            </div>
+
+            <div id="leaderboard" class="tab-content">
+                <div class="leaderboard-header">
+                    <span>Rank</span>
+                    <span>User</span>
+                    <span>Points</span>
+                </div>
+                <div class="leaderboard-entry">
+                    <span>1</span>
+                    <span>EcoWarrior42</span>
+                    <span>2,450</span>
+                </div>
+                <div class="leaderboard-entry">
+                    <span>2</span>
+                    <span>GreenThumb</span>
+                    <span>2,120</span>
+                </div>
+                <div class="leaderboard-entry you">
+                    <span>12</span>
+                    <span>You</span>
+                    <span>1,250</span>
+                </div>
+            </div>
+
+            <div id="badges" class="tab-content">
+                <div class="badge-grid">
+                    <div class="badge-card earned">
+                        <div class="badge-icon">⭐</div>
+                        <h4>Eco Starter</h4>
+                        <p>First 5 reports</p>
+                    </div>
+                    <div class="badge-card">
+                        <div class="badge-icon locked">🔒</div>
+                        <h4>Plastic Hero</h4>
+                        <p>Report 20 plastic bins</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{% static 'dashboard/js/script.js' %}"></script>
+</body>
+</html>

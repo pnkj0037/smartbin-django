@@ -1,0 +1,1 @@
+web: gunicorn Waste-Management.wsgi

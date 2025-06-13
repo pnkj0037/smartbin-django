@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Bin | Report Waste Bin</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+<body>
+    <div class="dashboard">
+        <!-- App Header -->
+        <header class="app-header">
+            <button class="icon-btn" onclick="window.location.href='dashboard.html'">
+                <span class="material-icons">arrow_back</span>
+            </button>
+            
+            <div class="logo">Report<span>Bin</span></div>
+            <div class="header-actions"></div>
+        </header>
+
+        <main class="main-content">
+            <div class="bin-info-card">
+                <div class="bin-id">Bin #SW-2045</div>
+                <div class="bin-location">
+                    <span class="material-icons">location_on</span>
+                    <span>200m away | Downtown District</span>
+                </div>
+                <div class="bin-status">
+                    <span class="status-badge yellow">🟡 65% full</span>
+                    <span>Last emptied: 2 hours ago</span>
+                </div>
+            </div>
+
+            <form id="report-form" class="report-form">
+                <div class="form-group">
+                    <label>Issue Type</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="issue" value="full" checked>
+                            <span class="radio-btn"></span>
+                            Bin is full/overflowing
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="issue" value="damaged">
+                            <span class="radio-btn"></span>
+                            Bin is damaged
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="issue" value="odor">
+                            <span class="radio-btn"></span>
+                            Bad smell/odor
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Add Photo Evidence (Optional)</label>
+                    <div class="photo-upload-container">
+                        <input type="file" id="bin-photo" accept="image/*" hidden>
+                        <label for="bin-photo" class="photo-upload-btn">
+                            <span class="material-icons">add_photo_alternate</span>
+                            <span id="photo-label">Tap to add photo</span>
+                        </label>
+                        <div id="photo-preview" class="photo-preview"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="additional-notes">Additional Notes</label>
+                    <textarea id="additional-notes" placeholder="Describe the issue..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Submit Report (+10pts)
+                </button>
+            </form>
+        </main>
+    </div>
+
+    <script src="{% static 'dashboard/js/script.js' %}"></script>
+</body>
+</html>

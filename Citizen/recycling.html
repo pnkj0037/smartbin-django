@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Bin | Recycling Hub</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <header class="app-header">
+            <button class="icon-btn" onclick="window.location.href='dashboard.html'">
+                <span class="material-icons">arrow_back</span>
+            </button>
+            
+            <div class="logo">Recycling<span>Hub</span></div>
+            <div class="header-actions"></div>
+        </header>
+
+        <main class="main-content">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="centers">Centers</button>
+                <button class="tab-btn" data-tab="pickup">Pickup</button>
+            </div>
+
+            <div id="centers" class="tab-content active">
+                <div class="search-box">
+                    <span class="material-icons">search</span>
+                    <input type="text" placeholder="Search recycling centers...">
+                </div>
+
+                <div id="recycling-map" class="recycling-map"></div>
+
+                <div class="center-list">
+                    <div class="center-card">
+                        <div class="center-info">
+                            <h3>Green Valley Recycling</h3>
+                            <p><span class="material-icons">location_on</span> 1.2km • Open until 7PM</p>
+                            <div class="waste-types">
+                                <span>♻️ E-waste</span>
+                                <span>🔋 Batteries</span>
+                            </div>
+                        </div>
+                        <button class="action-btn">
+                            <span class="material-icons">directions</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pickup" class="tab-content">
+                <div class="form-group">
+                    <label>Item Type</label>
+                    <select id="waste-type">
+                        <option value="furniture">Furniture</option>
+                        <option value="electronics">Large Electronics</option>
+                        <option value="hazardous">Hazardous Waste</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Pickup Address</label>
+                    <input type="text" placeholder="Enter your address">
+                </div>
+
+                <div class="form-group">
+                    <label>Preferred Date</label>
+                    <input type="date" id="pickup-date">
+                </div>
+
+                <button class="submit-btn">
+                    Schedule Pickup
+                </button>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

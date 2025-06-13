@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bin Management - SmartBin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="dashboard-container">
+    <!-- Sidebar (same as dashboard sidebar) -->
+    <aside class="sidebar">
+      <div class="logo">SmartBin</div>
+      <nav class="nav-links">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+        <a href="bins-management.html" class="nav-item active"><i class="fas fa-trash-alt"></i><span>Bins</span></a>
+        <a href="users-management.html" class="nav-item"><i class="fas fa-users"></i><span>Users</span></a>
+        <a href="reports.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Reports</span></a>
+        <a href="settings.html" class="nav-item"><i class="fas fa-cog"></i><span>Settings</span></a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-dashboard">
+      <header class="top-bar">
+        <h1>Bin Management</h1>
+        <div class="admin-info">
+          <div class="profile">
+            <img src="/assets/images/profile.png" alt="Admin" />
+              <span>Admin</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="bin-management-content">
+        <div class="card">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <input type="text" id="searchBins" placeholder="Search bins..." class="btn" style="flex: 1; max-width: 300px;">
+            <button class="btn">+ Add New Bin</button>
+          </div>
+
+          <div style="overflow-x:auto; margin-top: 20px;">
+            <table style="width:100%; border-collapse: collapse;">
+              <thead>
+                <tr style="background:#ecf0f1;">
+                  <th style="padding:12px; text-align:left;">Bin ID</th>
+                  <th style="padding:12px; text-align:left;">Location</th>
+                  <th style="padding:12px; text-align:left;">Status</th>
+                  <th style="padding:12px; text-align:left;">Capacity</th>
+                  <th style="padding:12px; text-align:left;">Last Cleaned</th>
+                  <th style="padding:12px; text-align:left;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="binTableBody">
+                <!-- Dynamic table rows will be inserted here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div><script src="{% static 'dashboard/js/script.js' %}">
+  </script>
+</body>
+
+</html>

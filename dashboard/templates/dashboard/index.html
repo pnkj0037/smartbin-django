@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Waste Management System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <div class="logo">Smart<span>Bin</span></div>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="{% url 'contact' %}" class="active">Contact</a>
+        <a href="{% url 'login' %}"><button class="login-btn">Login</button></a>
+      </div>
+      <div class="mobile-menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Revolutionizing Waste Management</h1>
+        <p>IoT-powered smart bins and citizen participation for cleaner, greener cities</p>
+        <div class="cta-buttons">
+          <a href="#how-it-works" class="btn primary">See How It Works</a>
+          <a href="{% url 'register' %}" class="btn secondary">Join Our Community</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="{% static 'dashboard/assets/images/bin.png' %}" alt="Smart Bin Illustration">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2>Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="icon"><i class="fas fa-microchip"></i></div>
+          <h3>Real-time Monitoring</h3>
+          <p>Smart sensors track fill levels and automatically alert collection teams</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>Citizen Reporting</h3>
+          <p>Users can manually report full bins when sensors fail</p>
+        </div>
+        <div class="feature-card">
+          <div class="icon"><i class="fas fa-route"></i></div>
+          <h3>Optimized Routes</h3>
+          <p>AI-powered collection routes save time and fuel</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Bin Detection</h3>
+            <p>Smart sensors detect when bins reach capacity</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Automatic Alerts</h3>
+            <p>System notifies collection teams with optimal routes</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Citizen Rewards</h3>
+            <p>Users earn points for reporting and proper disposal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="container">
+      <h2>Ready to Make a Difference?</h2>
+      <p>Join our community of environmentally conscious citizens today</p>
+      <a href="{% url 'register' %}" class="btn primary">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Smart<span>Bin</span></div>
+        <div class="footer-links">
+          <a href="{% url 'about' %}">About Us</a>
+          <a href="{% url 'contact' %}">Contact</a>
+          <a href="{% url 'privacy-policy' %}">Privacy Policy</a>
+        </div>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 Smart Waste Management System. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'dashboard/js/script.js' %}"></script>
+</body>
+</html>

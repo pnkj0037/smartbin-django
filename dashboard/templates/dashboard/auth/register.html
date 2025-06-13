@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account | SmartBin</title>
+
+  <!-- Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+</head>
+<body>
+
+  <div class="auth-container" style="display: flex; min-height: 100vh; font-family: 'Open Sans', sans-serif;">
+    
+    <!-- Left Section: Form -->
+    <div class="auth-card" style="flex: 1; max-width: 480px; background: #fff; padding: 50px; box-shadow: 0 0 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center;">
+      
+      <div class="auth-header" style="margin-bottom: 30px;">
+        <h1 style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 32px;">Create Account</h1>
+        <p style="color: #6b7280; font-size: 14px;">Join our smart waste management community</p>
+      </div>
+
+      <form method="POST" class="auth-form">
+        {% csrf_token %}
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="username" style="display: block; font-weight: 600; margin-bottom: 8px;">Username</label>
+          <input type="text" id="username" name="username" placeholder="Enter username" required
+                 style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="email" style="display: block; font-weight: 600; margin-bottom: 8px;">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required
+                 style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="password" style="display: block; font-weight: 600; margin-bottom: 8px;">Password</label>
+          <input type="password" id="password" name="password" placeholder="Create a password" required
+                 style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+        </div>
+
+        <div class="form-group" style="margin-bottom: 20px;">
+          <label for="user-type" style="display: block; font-weight: 600; margin-bottom: 8px;">I am a:</label>
+          <select id="user-type" name="user_type" required
+                  style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ccc;">
+            <option value="" disabled selected>Select user type</option>
+            <option value="citizen">Citizen</option>
+            <option value="driver">Collection Driver</option>
+            <option value="admin">Municipal Admin</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn auth-btn"
+                style="width: 100%; padding: 14px; background-color: #10b981; border: none; border-radius: 8px; color: #fff; font-size: 16px; font-weight: bold; cursor: pointer;">
+          Create Account
+        </button>
+      </form>
+    </div>
+
+    <!-- Right Section: Image -->
+    <div class="auth-image" style="flex: 1; background: #e6fff1; display: flex; align-items: center; justify-content: center;">
+      <img src="{% static 'dashboard/assets/images/recycle.jpg' %}" alt="Smart Waste System"
+           style="width: 90%; max-height: 90vh; object-fit: contain;">
+    </div>
+
+  </div>
+
+  <!-- JS if needed -->
+  <script src="{% static 'dashboard/js/script.js' %}"></script>
+</body>
+</html>

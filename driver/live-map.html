@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Live Route Map | Driver Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+
+<!-- Driver Navigation -->
+<nav>
+  <div class="container nav-container">
+    <div class="logo">Smart<span>Bin</span> Driver</div>
+    <div class="nav-links">
+      <a href="driver-dashboard.html">Dashboard</a>
+      <a href="live-map.html" class="active">Live Map</a>
+      <a href="task-list.html">Task List</a>
+      <a href="/index.html">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Map Section -->
+<section class="features" style="padding-top: 130px;">
+  <div class="container">
+    <h2 class="section-header">Live Route Map</h2>
+    <div id="map" style="height: 500px; border-radius: 8px;"></div>
+  </div>
+</section>
+
+<script>
+  function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 13,
+      center: { lat: 18.5204, lng: 73.8567 } // Pune
+    });
+
+    const bins = [
+      { lat: 18.5204, lng: 73.8567, title: "Bin #1", status: "collected" },
+      { lat: 18.5300, lng: 73.8600, title: "Bin #2", status: "attention" },
+      { lat: 18.5400, lng: 73.8700, title: "Bin #3", status: "pending" }
+    ];
+
+    bins.forEach((bin) => {
+      const icon =
+        bin.status === "collected"
+          ? "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+          : bin.status === "attention"
+          ? "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+          : "http://maps.google.com/mapfiles/ms/icons/red-dot.png";
+
+      const marker = new google.maps.Marker({
+        position: { lat: bin.lat, lng: bin.lng },
+        map,
+        title: bin.title,
+        icon: icon
+      });
+
+      const infoWindow = new google.maps.InfoWindow({
+        content: `<strong>${bin.title}</strong><br>Status: ${bin.status.toUpperCase()}<br><button class="btn primary" onclick="alert('Marked as Collected')">Mark as Collected</button>`
+      });
+
+      marker.addListener("click", () => {
+        infoWindow.open(map, marker);
+      });
+    });
+  }
+</script>
+
+</body>
+</html>

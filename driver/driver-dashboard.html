@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vehicle Dashboard | Driver Panel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../style.css"/>
+</head>
+<body>
+
+<!-- Driver Navigation -->
+<nav>
+  <div class="container nav-container">
+    <div class="logo">Smart<span>Bin</span> Driver</div>
+    <div class="nav-links">
+      <a href="driver-dashboard.html" class="active">Dashboard</a>    
+      <a href="live-map.html">Live Map</a>
+      <a href="task-list.html">Task List</a>
+      <a href="/index.html">Logout</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Vehicle Stats Section -->
+<section class="features" style="padding-top: 130px;">
+  <div class="container">
+    <h2 class="section-header">Driver Dashboard</h2>
+
+    <div class="features-grid">
+
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-dumpster"></i></div>
+        <h3>23 Bins</h3>
+        <p>Collected Today</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-road"></i></div>
+        <h3>42 km</h3>
+        <p>Total Route Covered</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-ban"></i></div>
+        <h3>3 Missed</h3>
+        <p>Missed Pickups</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="icon"><i class="fas fa-gas-pump"></i></div>
+        <h3>6.8 km/l</h3>
+        <p>Fuel Efficiency</p>
+      </div>
+
+    </div>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <button class="btn secondary" onclick="alert('CSV Report Downloaded')">Export to CSV</button>
+      <button class="btn primary" onclick="alert('PDF Report Downloaded')">Export to PDF</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- Font Awesome -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+</body>
+</html>

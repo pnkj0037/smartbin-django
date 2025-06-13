@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users - SmartBin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="dashboard-container">
+    <!-- Sidebar (same as dashboard sidebar) -->
+    <aside class="sidebar">
+        <div class="logo">SmartBin</div>
+        <nav class="nav-links">
+          <a href="dashboard.html" class="nav-item"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+          <a href="bins-management.html" class="nav-item"><i class="fas fa-trash-alt"></i><span>Bins</span></a>
+          <a href="users-management.html" class="nav-item active"><i class="fas fa-users"></i><span>Users</span></a>
+          <a href="reports.html" class="nav-item"><i class="fas fa-chart-line"></i><span>Reports</span></a>
+          <a href="settings.html" class="nav-item "><i class="fas fa-cog"></i><span>Settings</span></a>
+        </nav>
+      </aside>
+        <!-- Main Content -->
+        <main class="main-dashboard">
+            <header class="top-bar">
+                <h1>Users Management</h1>
+                <div class="admin-info">
+                    <div class="profile">
+                        <img src="/assets/images/profile.png" alt="Admin" />
+                        <span>Admin</span>
+                    </div>
+                  </div>
+            </header>
+
+            <section class="user-sections">
+                <!-- Driver Section -->
+                <div class="user-list-section">
+                    <h2>Drivers</h2>
+                    <div class="user-card">
+                        <div class="user-info">
+                            <img src="assets/driver1.jpg" alt="Driver" />
+                            <div>
+                                <h3>Driver #1</h3>
+                                <p>Vehicle: Truck - Plate #1jad34</p>
+                            </div>
+                        </div>
+                        <button class="btn track-location" onclick="trackLocation(1)">Track Location</button>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-info">
+                            <img src="assets/driver1.jpg" alt="Driver" />
+                            <div>
+                                <h3>Driver #2</h3>
+                                <p>Vehicle: Truck - Plate #12da4</p>
+                            </div>
+                        </div>
+                        <button class="btn track-location" onclick="trackLocation(1)">Track Location</button>
+                    </div>
+                    <!-- More drivers can be listed similarly -->
+                </div>
+
+                <!-- Citizen Section -->
+                <div class="user-list-section">
+                    <h2>Citizens</h2>
+                    <div class="user-card">
+                        <div class="user-info">
+                            <img src="assets/citizen1.jpg" alt="Citizen" />
+                            <div>
+                                <h3>Gaurang Bhagwe</h3>
+                                <p>Contributions: 6 bins</p>
+                                <p>Points: 72</p>
+                            </div>
+                        </div>
+                        <button class="btn">View Contribution</button>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-info">
+                            <img src="assets/citizen1.jpg" alt="Citizen" />
+                            <div>
+                                <h3>Atharv Warkad</h3>
+                                <p>Contributions: 5 bins</p>
+                                <p>Points: 60</p>
+                            </div>
+                        </div>
+                        <button class="btn">View Contribution</button>
+                    </div>
+                    <div class="user-card">
+                        <div class="user-info">
+                            <img src="assets/citizen1.jpg" alt="Citizen" />
+                            <div>
+                                <h3>Ayush Pathak</h3>
+                                <p>Contributions: 10 bins</p>
+                                <p>Points: 120</p>
+                            </div>
+                        </div>
+                        <button class="btn">View Contribution</button>
+                    </div>
+                    <!-- More citizens can be listed similarly -->
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

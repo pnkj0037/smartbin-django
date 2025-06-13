@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Bin | Citizen Dashboard</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="dashboard">
+    <!-- App Header -->
+    <header class="app-header">
+      <div class="logo">Smart<span>Bin</span></div>
+      <div class="header-actions">
+        <button class="icon-btn" id="notifications-btn">
+          <span class="material-icons">notifications</span>
+          <span class="badge">3</span>
+        </button>
+        <button class="icon-btn" id="profile-btn">
+          <span class="material-icons">account_circle</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Impact Summary -->
+      <section class="impact-summary">
+        <div class="impact-card">
+          <div class="impact-value">1,250</div>
+          <div class="impact-label">Eco Points</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-value">12.4</div>
+          <div class="impact-label">kg CO₂ Saved</div>
+        </div>
+        <div class="impact-card">
+          <div class="impact-value">28</div>
+          <div class="impact-label">Reports</div>
+        </div>
+      </section>
+
+      <!-- Reward Option -->
+      <section class="reward-section">
+        <button class="action-btn reward" id="reward-btn" onclick="window.location.href='reward.html'">
+          <span class="material-icons">redeem</span>
+          View Rewards
+        </button>
+      </section>
+
+
+      <!-- Map Container -->
+      <section class="map-container">
+        <div id="waste-map"></div>
+        <div class="map-legend">
+          <div class="legend-item">
+            <span class="legend-icon green"></span>
+            <span>Available</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon yellow"></span>
+            <span>Filling</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-icon red"></span>
+            <span>Full</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quick Actions -->
+      <section class="quick-actions">
+        <button class="action-btn primary" id="report-bin-btn" onclick="window.location.href='report.html'">
+          <span class="material-icons">report</span>
+          Report Bin
+        </button>
+        <button class="action-btn secondary" id="schedule-pickup-btn" onclick="window.location.href='recycling.html'">
+          <span class="material-icons">schedule</span>
+          Schedule Pickup
+        </button>
+      </section>
+
+      <!-- Challenges Section -->
+      <section class="challenges-section">
+        <h2 class="section-title">Current Challenges</h2>
+        <div class="challenge-card">
+          <div class="challenge-progress">
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 65%"></div>
+            </div>
+            <span>65% complete</span>
+          </div>
+          <div class="challenge-details">
+            <h3>Neighborhood Cleanup</h3>
+            <p>Report 10 bins this week to earn 500 bonus points</p>
+          </div>
+          <div class="challenge-reward">
+            <span class="material-icons">military_tech</span>
+            +500
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Report Modal -->
+    <div class="modal" id="report-modal">
+      <div class="modal-content">
+        <button class="close-btn" id="close-modal-btn">
+          <span class="material-icons">close</span>
+        </button>
+        <h2>Report Waste Bin</h2>
+        <div class="form-group">
+          <label for="bin-status">Bin Status</label>
+          <select id="bin-status">
+            <option value="full">Full</option>
+            <option value="damaged">Damaged</option>
+            <option value="overflowing">Overflowing</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Upload Photo (Optional)</label>
+          <div class="photo-upload">
+            <input type="file" id="bin-photo" accept="image/*">
+            <label for="bin-photo" class="upload-btn">
+              <span class="material-icons">add_photo_alternate</span>
+              Add Photo
+            </label>
+          </div>
+        </div>
+        <button class="submit-btn" id="submit-report-btn">Submit Report</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
