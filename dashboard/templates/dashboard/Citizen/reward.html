@@ -1,95 +1,292 @@
-{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Bin | Rewards Center</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'dashboard/css/style.css' %}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Bin | Rewards Center</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #2C3E50;
+      --secondary: #16A085;
+      --accent: #2980B9;
+      --light: #ECF0F1;
+      --dark: #34495E;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #F5F7FA;
+      margin: 0;
+      padding: 0;
+      color: var(--dark);
+    }
+
+    .dashboard {
+      max-width: 500px;
+      margin: auto;
+      background: #fff;
+      min-height: 100vh;
+      box-shadow: var(--shadow);
+    }
+
+    .app-header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .points-display {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .main-content {
+      padding: 1.5rem 1rem;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 1.5rem;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 0.8rem;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--dark);
+    }
+
+    .tab-btn.active {
+      border-bottom-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .reward-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .reward-info h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .reward-info p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .redeem-btn {
+      padding: 0.5rem 1rem;
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+
+    .leaderboard-header,
+    .leaderboard-entry {
+      display: grid;
+      grid-template-columns: 50px 1fr 80px;
+      padding: 0.8rem;
+      align-items: center;
+    }
+
+    .leaderboard-header {
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+      color: var(--dark);
+    }
+
+    .leaderboard-entry.you {
+      background: rgba(22, 160, 133, 0.1);
+      border-radius: 8px;
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .badge-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .badge-card.earned {
+      border: 2px solid var(--secondary);
+    }
+
+    .badge-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge-icon.locked {
+      opacity: 0.3;
+    }
+
+    @media (max-width: 480px) {
+      .main-content {
+        padding: 1rem;
+      }
+
+      .tabs {
+        flex-direction: column;
+      }
+
+      .tab-btn {
+        width: 100%;
+        text-align: left;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="dashboard">
-        <header class="app-header">
-            <button class="icon-btn" onclick="window.location.href='dashboard.html'">
-                <span class="material-icons">arrow_back</span>
-            </button>
-            
-            <div class="logo">Rewards<span>Center</span></div>
-            <div class="header-actions">
-                <div class="points-display">1,250 pts</div>
-            </div>
-        </header>
+  <div class="dashboard">
+    <header class="app-header">
+      <button class="icon-btn" onclick="window.location.href='{% url 'citizen_dashboard' %}'">
+        <span class="material-icons">arrow_back</span>
+      </button>
+      <div class="logo">Rewards<span>Center</span></div>
+      <div class="header-actions">
+        <div class="points-display">1,250 pts</div>
+      </div>
+    </header>
 
-        <main class="main-content">
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="rewards">Rewards</button>
-                <button class="tab-btn" data-tab="leaderboard">Leaderboard</button>
-                <button class="tab-btn" data-tab="badges">Badges</button>
-            </div>
+    <main class="main-content">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="rewards">Rewards</button>
+        <button class="tab-btn" data-tab="leaderboard">Leaderboard</button>
+        <button class="tab-btn" data-tab="badges">Badges</button>
+      </div>
 
-            <div id="rewards" class="tab-content active">
-                <div class="reward-card">
-                    <div class="reward-info">
-                        <h3>10% Coffee Discount</h3>
-                        <p>Green Bean Café • Expires in 3 days</p>
-                    </div>
-                    <button class="redeem-btn" data-cost="150">
-                        Redeem (150pts)
-                    </button>
-                </div>
-                
-                <div class="reward-card">
-                    <div class="reward-info">
-                        <h3>Free Metro Ride</h3>
-                        <p>City Transit • Valid for 1 week</p>
-                    </div>
-                    <button class="redeem-btn" data-cost="200">
-                        Redeem (200pts)
-                    </button>
-                </div>
-            </div>
+      <div id="rewards" class="tab-content active">
+        <div class="reward-card">
+          <div class="reward-info">
+            <h3>10% Coffee Discount</h3>
+            <p>Green Bean Café • Expires in 3 days</p>
+          </div>
+          <button class="redeem-btn" data-cost="150">Redeem (150pts)</button>
+        </div>
+        <div class="reward-card">
+          <div class="reward-info">
+            <h3>Free Metro Ride</h3>
+            <p>City Transit • Valid for 1 week</p>
+          </div>
+          <button class="redeem-btn" data-cost="200">Redeem (200pts)</button>
+        </div>
+      </div>
 
-            <div id="leaderboard" class="tab-content">
-                <div class="leaderboard-header">
-                    <span>Rank</span>
-                    <span>User</span>
-                    <span>Points</span>
-                </div>
-                <div class="leaderboard-entry">
-                    <span>1</span>
-                    <span>EcoWarrior42</span>
-                    <span>2,450</span>
-                </div>
-                <div class="leaderboard-entry">
-                    <span>2</span>
-                    <span>GreenThumb</span>
-                    <span>2,120</span>
-                </div>
-                <div class="leaderboard-entry you">
-                    <span>12</span>
-                    <span>You</span>
-                    <span>1,250</span>
-                </div>
-            </div>
+      <div id="leaderboard" class="tab-content">
+        <div class="leaderboard-header">
+          <span>Rank</span>
+          <span>User</span>
+          <span>Points</span>
+        </div>
+        <div class="leaderboard-entry">
+          <span>1</span>
+          <span>EcoWarrior42</span>
+          <span>2,450</span>
+        </div>
+        <div class="leaderboard-entry">
+          <span>2</span>
+          <span>GreenThumb</span>
+          <span>2,120</span>
+        </div>
+        <div class="leaderboard-entry you">
+          <span>12</span>
+          <span>You</span>
+          <span>1,250</span>
+        </div>
+      </div>
 
-            <div id="badges" class="tab-content">
-                <div class="badge-grid">
-                    <div class="badge-card earned">
-                        <div class="badge-icon">⭐</div>
-                        <h4>Eco Starter</h4>
-                        <p>First 5 reports</p>
-                    </div>
-                    <div class="badge-card">
-                        <div class="badge-icon locked">🔒</div>
-                        <h4>Plastic Hero</h4>
-                        <p>Report 20 plastic bins</p>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
+      <div id="badges" class="tab-content">
+        <div class="badge-grid">
+          <div class="badge-card earned">
+            <div class="badge-icon">⭐</div>
+            <h4>Eco Starter</h4>
+            <p>First 5 reports</p>
+          </div>
+          <div class="badge-card">
+            <div class="badge-icon locked">🔒</div>
+            <h4>Plastic Hero</h4>
+            <p>Report 20 plastic bins</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
 
-    <script src="{% static 'dashboard/js/script.js' %}"></script>
+  <script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(tab => tab.classList.remove('active'));
+
+        button.classList.add('active');
+        document.getElementById(button.dataset.tab).classList.add('active');
+      });
+    });
+  </script>
 </body>
 </html>

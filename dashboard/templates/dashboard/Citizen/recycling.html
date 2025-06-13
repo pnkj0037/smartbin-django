@@ -1,84 +1,274 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Bin | Recycling Hub</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="{% static 'dashboard/templates/dashboard/Citizen/style.css' %}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Bin | Recycling Hub</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+  <style>
+    :root {
+      --primary: #2C3E50;
+      --secondary: #16A085;
+      --accent: #2980B9;
+      --light: #ECF0F1;
+      --dark: #34495E;
+      --success: #27AE60;
+      --warning: #F39C12;
+      --danger: #E74C3C;
+      --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #F5F7FA;
+      font-family: 'Segoe UI', Roboto, sans-serif;
+      color: var(--dark);
+    }
+
+    .dashboard {
+      max-width: 480px;
+      margin: 0 auto;
+      background: #fff;
+      min-height: 100vh;
+      box-shadow: var(--shadow);
+    }
+
+    .app-header {
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.2rem;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .main-content {
+      padding: 1rem;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid #ddd;
+      margin-bottom: 1rem;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 0.8rem;
+      background: none;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: var(--transition);
+    }
+
+    .tab-btn.active {
+      border-bottom-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .search-box input {
+      border: none;
+      outline: none;
+      flex: 1;
+      margin-left: 0.5rem;
+    }
+
+    .recycling-map {
+      height: 220px;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 1rem;
+    }
+
+    .center-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .center-info h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: var(--primary);
+    }
+
+    .center-info p {
+      font-size: 0.9rem;
+      color: #7f8c8d;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin: 0.3rem 0;
+    }
+
+    .waste-types {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .waste-types span {
+      background: var(--light);
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+
+    .action-btn {
+      background: var(--accent);
+      border: none;
+      padding: 10px;
+      border-radius: 50%;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body>
-    <div class="dashboard">
-        <header class="app-header">
-            <button class="icon-btn" onclick="window.location.href='dashboard.html'">
-                <span class="material-icons">arrow_back</span>
+  <div class="dashboard">
+    <header class="app-header">
+      <button class="icon-btn" onclick="window.location.href='{% url 'citizen_dashboard' %}'">
+        <span class="material-icons">arrow_back</span>
+      </button>
+      <div class="logo">Recycling<span>Hub</span></div>
+      <div class="header-actions"></div>
+    </header>
+
+    <main class="main-content">
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="centers">Centers</button>
+        <button class="tab-btn" data-tab="pickup">Pickup</button>
+      </div>
+
+      <div id="centers" class="tab-content active">
+        <div class="search-box">
+          <span class="material-icons">search</span>
+          <input type="text" placeholder="Search recycling centers...">
+        </div>
+
+        <div id="recycling-map" class="recycling-map">
+          <!-- Map injected by Leaflet -->
+        </div>
+
+        <div class="center-list">
+          <div class="center-card">
+            <div class="center-info">
+              <h3>Green Valley Recycling</h3>
+              <p><span class="material-icons" style="font-size: 16px;">location_on</span>1.2km • Open until 7PM</p>
+              <div class="waste-types">
+                <span>♻️ E-waste</span>
+                <span>🔋 Batteries</span>
+              </div>
+            </div>
+            <button class="action-btn">
+              <span class="material-icons">directions</span>
             </button>
-            
-            <div class="logo">Recycling<span>Hub</span></div>
-            <div class="header-actions"></div>
-        </header>
+          </div>
+        </div>
+      </div>
 
-        <main class="main-content">
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="centers">Centers</button>
-                <button class="tab-btn" data-tab="pickup">Pickup</button>
-            </div>
+      <div id="pickup" class="tab-content">
+        <div class="form-group">
+          <label>Item Type</label>
+          <select id="waste-type">
+            <option value="furniture">Furniture</option>
+            <option value="electronics">Large Electronics</option>
+            <option value="hazardous">Hazardous Waste</option>
+          </select>
+        </div>
 
-            <div id="centers" class="tab-content active">
-                <div class="search-box">
-                    <span class="material-icons">search</span>
-                    <input type="text" placeholder="Search recycling centers...">
-                </div>
+        <div class="form-group">
+          <label>Pickup Address</label>
+          <input type="text" placeholder="Enter your address">
+        </div>
 
-                <div id="recycling-map" class="recycling-map"></div>
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date" id="pickup-date">
+        </div>
 
-                <div class="center-list">
-                    <div class="center-card">
-                        <div class="center-info">
-                            <h3>Green Valley Recycling</h3>
-                            <p><span class="material-icons">location_on</span> 1.2km • Open until 7PM</p>
-                            <div class="waste-types">
-                                <span>♻️ E-waste</span>
-                                <span>🔋 Batteries</span>
-                            </div>
-                        </div>
-                        <button class="action-btn">
-                            <span class="material-icons">directions</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <button class="submit-btn" style="
+          background: var(--secondary);
+          color: white;
+          border: none;
+          padding: 12px 20px;
+          border-radius: 6px;
+          font-weight: 600;
+          width: 100%;
+          cursor: pointer;
+          margin-top: 1rem;">Schedule Pickup</button>
+      </div>
+    </main>
+  </div>
 
-            <div id="pickup" class="tab-content">
-                <div class="form-group">
-                    <label>Item Type</label>
-                    <select id="waste-type">
-                        <option value="furniture">Furniture</option>
-                        <option value="electronics">Large Electronics</option>
-                        <option value="hazardous">Hazardous Waste</option>
-                    </select>
-                </div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Leaflet Map Setup
+    const map = L.map('recycling-map').setView([18.5204, 73.8567], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    L.marker([18.5204, 73.8567]).addTo(map).bindPopup("Green Valley Recycling");
 
-                <div class="form-group">
-                    <label>Pickup Address</label>
-                    <input type="text" placeholder="Enter your address">
-                </div>
-
-                <div class="form-group">
-                    <label>Preferred Date</label>
-                    <input type="date" id="pickup-date">
-                </div>
-
-                <button class="submit-btn">
-                    Schedule Pickup
-                </button>
-            </div>
-        </main>
-    </div>
-
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="{% static 'dashboard/js/script.js' %}"></script>
+    // Tabs Switching
+    const tabs = document.querySelectorAll(".tab-btn");
+    const contents = document.querySelectorAll(".tab-content");
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        contents.forEach(c => c.classList.remove("active"));
+        tab.classList.add("active");
+        document.getElementById(tab.dataset.tab).classList.add("active");
+      });
+    });
+  </script>
 </body>
 </html>

@@ -15,4 +15,7 @@ urlpatterns = [
     path('contact/', views.contact_view, name='contact'),
     path('privacy-policy/', views.privacy_view, name='privacy-policy'),
     path('api/update-dustbin/', update_dustbin_fill_level),
+    path('reward/', views.reward_view, name='reward'),
+    path('citizen/report/', views.report_page, name='report'),
+    path('citizen/recycling/', views.recycling_view, name='recycling'),
 ]

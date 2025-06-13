@@ -42,7 +42,8 @@ def login_view(request):
                 else:
                     return redirect('citizen_dashboard')
             except UserProfile.DoesNotExist:
-                return redirect('citizen_dashboard')
+                user_type = 'citizen'
+                UserProfile.objects.create(user=user, user_type='citizen')
         else:
             return render(request, 'dashboard/auth/login.html', {'error': 'Invalid credentials'})
     return render(request, 'dashboard/auth/login.html')
@@ -60,7 +61,11 @@ def admin_dashboard(request):
 
 @login_required
 def citizen_dashboard(request):
-    return render(request, 'dashboard/Citizen/dashboard.html')
+    try:
+        return render(request, 'dashboard/Citizen/dashboard.html')
+    except Exception as e:
+        from django.http import HttpResponse
+        return HttpResponse(f"Template Error: {e}")
 
 
 def dustbin_data(request):
@@ -78,6 +83,15 @@ def dustbin_data(request):
 
 def home(request):
     return render(request, 'dashboard/index.html')
+
+def reward_view(request):
+    return render(request, 'dashboard/Citizen/reward.html')
+
+def report_page(request):
+    return render(request, 'dashboard/Citizen/report.html')
+
+def recycling_view(request):
+    return render(request, 'dashboard/Citizen/recycling.html')
 
 
 @csrf_exempt

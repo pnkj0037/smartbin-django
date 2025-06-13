@@ -544,7 +544,7 @@
 
         <script>
           document.getElementById("reward-btn").addEventListener("click", function () {
-            window.location.href = "{% url 'recycling' %}";
+            window.location.href = "{% url 'reward' %}";
           });
         </script>
 
@@ -573,14 +573,16 @@
 
       <!-- ✱ Quick Actions -->
       <section class="quick-actions">
-        <button class="action-btn primary" onclick="window.location.href='report.html'">
+        <button class="action-btn primary" onclick="window.location.href='{% url 'report' %}'">
           <span class="material-icons">report</span>Report Bin
         </button>
-        <button class="action-btn secondary" onclick="window.location.href='recycling.html'">
+        <button class="action-btn secondary" onclick="window.location.href='{% url 'recycling' %}'">
           <span class="material-icons">schedule</span>Schedule Pickup
         </button>
       </section>
 
+
+      
       <!-- ✱ Challenges -->
       <section class="challenges-section">
         <h2 class="section-title">Current Challenges</h2>
