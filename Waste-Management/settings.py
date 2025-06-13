@@ -10,7 +10,7 @@ DEBUG = True
 SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = os.getenv('DEBUG')=='True'
 
-ALLOWED_HOSTS = ['https://waste-management-qqzt.onrender.com', 'localhost']
+ALLOWED_HOSTS = ['*']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
