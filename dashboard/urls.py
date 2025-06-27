@@ -18,4 +18,6 @@ urlpatterns = [
     path('reward/', views.reward_view, name='reward'),
     path('citizen/report/', views.report_page, name='report'),
     path('citizen/recycling/', views.recycling_view, name='recycling'),
+    path('update-dustbin/', update_dustbin_fill_level, name='update_dustbin'),
+    path('update-dustbin-fill/', views.update_dustbin_fill_level),
 ]

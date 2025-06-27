@@ -3,15 +3,18 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# SECRET_KEY = 'django-insecure-h@uhm_8qvg*uu7q4v%a_m588%9i#l(l$+i#ucd+w6n$i8jn0'
+SECRET_KEY = 'django-insecure-h@uhm_8qvg*uu7q4v%a_m588%9i#l(l$+i#ucd+w6n$i8jn0'
 
-# DEBUG = False
+# DEBUG = True
+DEBUG = False  # Set False in production
 
-SECRET_KEY = os.getenv('SECRET_KEY')
-DEBUG = os.getenv('DEBUG')=='True'
+#SECRET_KEY = os.getenv('SECRET_KEY')
+
+
+#DEBUG = os.getenv('DEBUG')=='True'
 
 ALLOWED_HOSTS = ['*']
-STATIC_ROOT = BASE_DIR / "staticfiles"
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For serving static files
 
 
 INSTALLED_APPS = [
@@ -109,3 +112,4 @@ STATICFILES_DIRS = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
