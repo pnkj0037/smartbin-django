@@ -1,10 +1,20 @@
+# services:
+#   - name: my-django-app
+#     type: web
+#     env: python
+#     build:
+#       commands:
+#         - pip install -r requirements.txt
+#         - python manage.py migrate
+#     start:
+#       command: gunicorn Waste-Management.wsgi
 services:
-  - name: my-django-app
-    type: web
+  - type: web
+    name: smartbin-django
     env: python
-    build:
-      commands:
-        - pip install -r requirements.txt
-        - python manage.py migrate
-    start:
-      command: gunicorn Waste-Management.wsgi
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn Waste-Management.wsgi
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10
+    preDeployCommand: python manage.py migrate
