@@ -1,13 +1,3 @@
-# services:
-#   - name: my-django-app
-#     type: web
-#     env: python
-#     build:
-#       commands:
-#         - pip install -r requirements.txt
-#         - python manage.py migrate
-#     start:
-#       command: gunicorn Waste-Management.wsgi
 services:
   - type: web
     name: smartbin-django
