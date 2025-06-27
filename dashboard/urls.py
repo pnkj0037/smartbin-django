@@ -20,4 +20,6 @@ urlpatterns = [
     path('citizen/recycling/', views.recycling_view, name='recycling'),
     path('update-dustbin/', update_dustbin_fill_level, name='update_dustbin'),
     path('update-dustbin-fill/', views.update_dustbin_fill_level),
+    path('driver/', views.driver_dashboard, name='driver_dashboard'),
+
 ]
