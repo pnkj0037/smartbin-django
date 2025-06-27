@@ -70,7 +70,7 @@ def citizen_dashboard(request):
 @login_required
 def driver_dashboard(request):
     try:
-        return render(request, 'dashboard/driver_dashboard.html')
+        return render(request, 'templates/dashboard/driver/driver_dashboard.html')
     except Exception as e:
         from django.http import HttpResponse
         return HttpResponse(f"Template Error: {e}")
